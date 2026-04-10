@@ -47,6 +47,7 @@
     border-top: 4px solid var(--accent);
     border-bottom: 2px solid var(--ink);
     padding: 0;
+    padding-left: 240px;
     text-align: center;
     background: var(--paper);
   }
@@ -150,10 +151,7 @@
     padding: 50px 40px 80px 40px;
   }
 
-  /* Masthead: offset to clear the fixed sidebar */
-  .masthead {
-    padding-left: 240px;
-  }
+  /* Masthead: offset to clear the fixed sidebar — padding merged above */
   .toc-label {
     font-size: 10px;
     letter-spacing: 3px;
@@ -837,19 +835,90 @@
     margin-top: 40px;
   }
 
+  /* ── MOBILE NAV TOGGLE ── */
+  .mobile-nav-bar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 52px;
+    background: var(--paper);
+    border-bottom: 2px solid var(--ink);
+    z-index: 300;
+    align-items: center;
+    padding: 0 18px;
+    gap: 12px;
+  }
+  .mobile-nav-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mobile-menu-btn {
+    background: none;
+    border: 1px solid var(--rule);
+    padding: 6px 10px;
+    cursor: pointer;
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .mobile-progress {
+    display: none;
+    position: fixed;
+    top: 52px; left: 0; right: 0;
+    height: 3px;
+    background: var(--rule-light);
+    z-index: 300;
+  }
+  .mobile-progress-fill {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.15s linear;
+  }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,22,20,0.5);
+    z-index: 250;
+  }
+  .sidebar-overlay.open { display: block; }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .sidebar { display: none; }
-    .masthead { padding-left: 0; }
+    .mobile-nav-bar { display: flex; }
+    .mobile-progress { display: block; }
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.25s ease;
+      top: 52px;
+      height: calc(100vh - 52px);
+    }
+    .sidebar.open { transform: translateX(0); }
+    .masthead { padding-left: 0; padding-top: 68px; }
     .page-shell { margin-left: 0; }
     .main { padding: 30px 20px 60px; }
     .report-title { font-size: 26px; }
     .stat-grid { grid-template-columns: repeat(2, 1fr); }
     .summary-cols { grid-template-columns: 1fr; }
+    .scorecard-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .report-title { font-size: 22px; }
+    .main { padding: 24px 16px 60px; }
+    .section-title { font-size: 22px; }
   }
 
   @media print {
-    .sidebar { display: none; }
+    .sidebar, .mobile-nav-bar, .mobile-progress, .sidebar-overlay { display: none; }
     .masthead { padding-left: 0; }
     .page-shell { margin-left: 0; }
     .main { padding: 20px; }
@@ -857,26 +926,112 @@
     .chart-block { break-inside: avoid; }
     section { break-inside: avoid; }
   }
+
+  /* ── LAYOUT REFINEMENTS ── */
+  /* Consolidate masthead: remove duplicate padding-left rule by resetting */
+  /* (The second .masthead block with padding-left:240px handled via page offset) */
+
+  /* Better sidebar top-padding to clear its own reading progress bar */
+  .sidebar-inner { padding-top: 28px; }
+
+  /* TOC visual improvements */
+  .toc-list { padding: 0; }
+  .toc-list > li { 
+    border-bottom: 1px solid var(--rule-light);
+    margin-bottom: 0;
+  }
+  .toc-list > li:last-child { border-bottom: none; }
+  .toc-list a {
+    padding: 6px 8px 6px 0;
+  }
+  .toc-list a.active {
+    background: var(--paper-warm);
+    padding-left: 8px;
+  }
+
+  /* Sidebar reading progress sits at top reliably */
+  .reading-progress { order: -1; }
+
+  /* Section header spacing polish */
+  .section-header { margin-bottom: 32px; }
+
+  /* Chart block refinements */
+  .chart-block {
+    border-radius: 0;
+    box-shadow: 0 1px 3px rgba(26,22,20,0.06);
+  }
+
+  /* Stat card hover */
+  .stat-card {
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .stat-card:hover {
+    box-shadow: 0 3px 10px rgba(26,22,20,0.1);
+    transform: translateY(-1px);
+  }
+
+  /* Abstract box anchor offset for fixed headers */
+  #abstract { scroll-margin-top: 20px; }
+  section[id] { scroll-margin-top: 20px; }
+
+  @media (max-width: 900px) {
+    #abstract { scroll-margin-top: 70px; }
+    section[id] { scroll-margin-top: 70px; }
+  }
+
+  /* Accordion visual polish */
+  .accordion { border-radius: 0; overflow: hidden; }
+  .accordion + .accordion { margin-top: -1px; }
+
+  /* Table horizontal scroll on mobile */
+  @media (max-width: 600px) {
+    .table-wrap { margin-left: -16px; margin-right: -16px; border-radius: 0; }
+    table { font-size: 13px; }
+    td, thead th { padding: 8px 10px; }
+  }
+
+  /* Eval questions on mobile */
+  @media (max-width: 600px) {
+    .eval-q-head { flex-direction: column; gap: 6px; }
+    .scorecard-grid { grid-template-columns: 1fr; }
+    .summary-cols { gap: 12px; }
+  }
+
+  /* Tighten timeline on mobile */
+  @media (max-width: 600px) {
+    .tl-item { padding-left: 18px; }
+    .timeline { padding-left: 16px; }
+  }
+
 </style>
 </head>
 <body>
 
+<!-- MOBILE NAV BAR -->
+<div class="mobile-nav-bar" id="mobileNavBar">
+  <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation" id="menuBtn">☰</button>
+  <span class="mobile-nav-title">OpenEvidence Assessment</span>
+</div>
+<div class="mobile-progress"><div class="mobile-progress-fill" id="mobileBar"></div></div>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileNav()"></div>
+
 <!-- MASTHEAD -->
 <div class="masthead">
   <div class="masthead-inner">
-    <div class="journal-title">Clinical Education &amp; Technology Analysis · LSU Health / Tulane GME</div>
+    <div class="journal-title">Clinical Education &amp; Technology Analysis · LSU Health </div>
     <h1 class="report-title">OpenEvidence: A Clinical and Strategic Assessment for Academic Medical Practice</h1>
     <div class="report-subtitle">Evidence synthesis, failure modes, governance, and deployment considerations across Louisiana health systems</div>
     <div class="author-row">
       <span class="author-name">Ram Paragi</span>
       <span class="author-sep">·</span>
-      <a href="mailto:rparag@lsuhsc.edu" class="author-email">
+      <a href="/cdn-cgi/l/email-protection#75070514071412351906001d06165b101100" class="author-email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/>
         </svg>
-        rparag@lsuhsc.edu
+        <span class="__cf_email__" data-cfemail="12606273607375527e61677a61713c777667">[email&#160;protected]</span>
       </a>
     </div>
+    <div class="meta-row">
       <span>April 9, 2026</span>
       <span class="dot">·</span>
       <span>Prepared for clinical department chairs, program directors, faculty, residents, fellows &amp; students</span>
@@ -1050,6 +1205,7 @@
           </div>
         </div>
       </div>
+      <div class="stat-grid">
         <div class="stat-card">
           <div class="stat-num">40%+</div>
           <div class="stat-label">of U.S. physicians using platform daily</div>
@@ -1148,7 +1304,8 @@
             </ul>
           </div>
         </div>
-      </div> trained exclusively on licensed medical texts — not the public internet. The architecture is a multi-agent hub-and-spoke system: a central "conductor" AI performs intent analysis and routes each physician query to the most relevant subspecialty model before assembling a final response. The platform describes 160+ subspecialty models. All responses are rejected if they cannot be linked to a verified source citation — the system refuses to answer rather than hallucinate an unsourced response.</p>
+      </div>
+      <p>OpenEvidence's core AI stack is trained exclusively on licensed medical texts — not the public internet. The architecture is a multi-agent hub-and-spoke system: a central "conductor" AI performs intent analysis and routes each physician query to the most relevant subspecialty model before assembling a final response. The platform describes 160+ subspecialty models. All responses are rejected if they cannot be linked to a verified source citation — the system refuses to answer rather than hallucinate an unsourced response.</p>
 
       <p>The backend runs on Google Cloud Platform; the frontend on Next.js with Vercel Fluid compute (a production infrastructure detail confirmed by internal audit records, not marketing claims). The system is multimodal and multicloud, as stated by CEO Daniel Nadler at the JP Morgan Healthcare Conference in January 2026.</p>
 
@@ -1257,7 +1414,8 @@
             </ul>
           </div>
         </div>
-      </div></h3>
+      </div>
+
       <p>OpenEvidence achieved 100% on the United States Medical Licensing Examination using the Kung et al. dataset — a benchmark drawn from publicly available USMLE Step 1, Step 2, and Step 3 questions in multiple-choice format. The system not only answered correctly but generated accurate reasoning chains explaining the underlying physiology.</p>
       <p>This benchmark evaluates encyclopedic recall of established medical facts and recognition of classic presentations. It does not evaluate multi-step heuristic reasoning under diagnostic ambiguity, performance on atypical presentations, or the kinds of clinical judgment exercised by attending physicians managing complex inpatients. No study has independently replicated this result with a different question set.</p>
 
@@ -1363,7 +1521,8 @@
             </ul>
           </div>
         </div>
-      </div> — where search outputs inform Visits notes, which feed Coding Intelligence suggestions, which populate Tandem prior auth letters — errors in one function can propagate downstream. The four failure modes below apply across this integrated system.</p>
+      </div>
+      <p>OpenEvidence's six-product suite creates a chained failure surface — where search outputs inform Visits notes, which feed Coding Intelligence suggestions, which populate Tandem prior auth letters — errors in one function can propagate downstream. The four failure modes below apply across this integrated system.</p>
 
       <div class="accordion">
         <button class="accordion-btn" onclick="toggleAccordion(this)">
@@ -1468,7 +1627,8 @@
             </ul>
           </div>
         </div>
-      </div> CPMs range from $70 to over $1,000, targeting 760,000 NPI-verified U.S. prescribers at the precise moment they are answering a clinical question that may inform a prescribing decision. This is the most precisely targeted physician ad inventory in existence.</p>
+      </div>
+      <p>CPMs range from $70 to over $1,000, targeting 760,000 NPI-verified U.S. prescribers at the precise moment they are answering a clinical question that may inform a prescribing decision. This is the most precisely targeted physician ad inventory in existence.</p>
 
       <div class="chart-block">
         <div class="chart-title">Figure 5 — Advertising CPM comparison: OpenEvidence vs. general digital platforms</div>
@@ -1547,7 +1707,8 @@
             </ul>
           </div>
         </div>
-      </div> from a reference tool into a revenue-generating enterprise asset. Hospital CFOs are more willing to pay for AI that demonstrably captures missed billing revenue than for AI that saves physician time. This is the stated industry logic behind both Coding Intelligence and the Tandem partnership.</p>
+      </div>
+      <p>OpenEvidence has reoriented from a reference tool into a revenue-generating enterprise asset. Hospital CFOs are more willing to pay for AI that demonstrably captures missed billing revenue than for AI that saves physician time. This is the stated industry logic behind both Coding Intelligence and the Tandem partnership.</p>
 
       <h3>Coding Intelligence (launched March 26, 2026)</h3>
       <div class="table-wrap">
@@ -1628,7 +1789,9 @@
             </ul>
           </div>
         </div>
-      </div> — Clinical decision support platform comparison: 2026 independent scoring</div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-title">Figure 6 — Clinical decision support platform comparison: 2026 independent scoring</div>
         <canvas id="competitorChart" height="200"></canvas>
         <div class="fig-caption"><span class="fig-num">Fig. 6.</span> Composite scores from 2026 independent platform evaluation. UpToDate Expert AI leads on total aggregate score (71/100) and clinical reasoning depth. OpenEvidence leads on internet search volume (98.7% of all searches among AI-enabled clinical reference tools). These serve different use cases.</div>
       </div>
@@ -1758,7 +1921,8 @@
             </ul>
           </div>
         </div>
-      </div> covered by this report encounter different AI technology landscapes. None of the four systems has publicly announced an OpenEvidence enterprise contract as of April 2026. But all are actively deploying AI in clinical workflows — predominantly ambient documentation — and all operate on Epic, creating the EHR infrastructure through which OpenEvidence can be accessed individually or (if a system contract is executed) enterprise-wide.</p>
+      </div>
+      <p>The four health systems covered by this report encounter different AI technology landscapes. None of the four systems has publicly announced an OpenEvidence enterprise contract as of April 2026. But all are actively deploying AI in clinical workflows — predominantly ambient documentation — and all operate on Epic, creating the EHR infrastructure through which OpenEvidence can be accessed individually or (if a system contract is executed) enterprise-wide.</p>
 
       <div class="callout note">
         <div class="callout-head">Louisiana Epic convergence</div>
@@ -1890,7 +2054,8 @@
             </ul>
           </div>
         </div>
-      </div></h3>
+      </div>
+
       <p>OpenEvidence achieved full HIPAA compliance in April 2025. Covered entities can securely input protected health information, provided the hospital system has executed a Business Associate Agreement (BAA) with OpenEvidence. For individual physicians and trainees using free NPI-verified accounts without a BAA — the default situation for most users — the Privacy Policy explicitly states that any PHI submitted is deemed unintentional and remains the "sole responsibility of the user, for which OpenEvidence disclaims all liability."</p>
 
       <div class="callout warning">
@@ -2173,7 +2338,8 @@
             </ul>
           </div>
         </div>
-      </div> The following questions are not answered by publicly available information as of April 2026:</p>
+      </div>
+      <p>The following questions are not answered by publicly available information as of April 2026:</p>
 
       <div class="table-wrap">
         <table>
@@ -2265,7 +2431,8 @@
             </ul>
           </div>
         </div>
-      </div> to OpenEvidence — not as background reading, but as an evaluative framework. The core question is not whether OpenEvidence uses RAG. Every major competitor does. The question is <em>how</em> it is implemented across chunking strategy, embedding design, retrieval depth, and citation verification — and where the public evidence is too thin to make confident claims.</p>
+      </div>
+      <p>This section applies the RAG evaluation framework to OpenEvidence — not as background reading, but as an evaluative framework. The core question is not whether OpenEvidence uses RAG. Every major competitor does. The question is <em>how</em> it is implemented across chunking strategy, embedding design, retrieval depth, and citation verification — and where the public evidence is too thin to make confident claims.</p>
 
       <div class="callout note">
         <div class="callout-head">Analyst framing</div>
@@ -2380,7 +2547,8 @@
             </ul>
           </div>
         </div>
-      </div> — a generative conversational interface built exclusively on UpToDate's own expert-authored, peer-reviewed content repository. It is not trained on the open web, does not draw from raw journal databases, and does not expose a retrieval system in the same way OpenEvidence does. It applies a generative AI layer on top of human-curated clinical summaries that UpToDate has been building for 30 years.</p>
+      </div>
+      <p>UpToDate Expert AI is a generative conversational interface built exclusively on UpToDate's own expert-authored, peer-reviewed content repository. It is not trained on the open web, does not draw from raw journal databases, and does not expose a retrieval system in the same way OpenEvidence does. It applies a generative AI layer on top of human-curated clinical summaries that UpToDate has been building for 30 years.</p>
 
       <p>These are two fundamentally different architectures solving the same surface-level problem — answering clinical questions quickly — but with different underlying assumptions about where accuracy lives.</p>
 
@@ -2496,7 +2664,8 @@
             </ul>
           </div>
         </div>
-      </div> that analysts call the "Doximity Playbook." Understanding this model is not optional for clinicians at academic medical centers — it directly affects how you should interpret the platform's incentives, whose interests are being served when you use it, and what the long-term trajectory of the service looks like.</p>
+      </div>
+      <p>OpenEvidence follows a strategy that analysts call the "Doximity Playbook." Understanding this model is not optional for clinicians at academic medical centers — it directly affects how you should interpret the platform's incentives, whose interests are being served when you use it, and what the long-term trajectory of the service looks like.</p>
 
       <h3>How the model works</h3>
 
@@ -2643,7 +2812,8 @@
             </ul>
           </div>
         </div>
-      </div> identified across this report, organizing them into five categories relevant to different audiences: clinical faculty evaluating the tool, program directors designing curriculum around it, hospital administrators considering enterprise deployment, trainees using it daily, and anyone tracking the platform's long-term sustainability.</p>
+      </div>
+      <p>This section consolidates the key risks identified across this report, organizing them into five categories relevant to different audiences: clinical faculty evaluating the tool, program directors designing curriculum around it, hospital administrators considering enterprise deployment, trainees using it daily, and anyone tracking the platform's long-term sustainability.</p>
 
       <h3>Risk 1 — Accuracy and patient safety</h3>
 
@@ -3092,7 +3262,7 @@
 </div>
 
 <!-- CHART.JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 
 <script>
 // ── CHART GLOBALS ──
@@ -3411,15 +3581,49 @@ const observer = new IntersectionObserver(entries => {
         if (linkOffsetTop < currentScroll + buffer) {
           sidebar.scrollTo({ top: Math.max(0, linkOffsetTop - buffer), behavior: 'smooth' });
         } else if (linkOffsetTop > currentScroll + sidebarHeight - buffer) {
-          sidebar.scrollTo({ top: linkOffsetTop - sidebarHeight + buffer + 40, behavior: 'smooth' });
+          sidebar.scrollTo({ top: linkOffsetTop - sidebarHeight + buffer + 100, behavior: 'smooth' });
         }
       }
     }
   });
-}, { rootMargin: '-15% 0px -65% 0px' });
+}, { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' });
 
-sections.forEach(s => observer.observe(s));
+sections.forEach(el => observer.observe(el));
+
+// ── MOBILE NAV ──
+function toggleMobileNav() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const btn = document.getElementById('menuBtn');
+  const isOpen = sidebar.classList.contains('open');
+  sidebar.classList.toggle('open', !isOpen);
+  overlay.classList.toggle('open', !isOpen);
+  btn.textContent = isOpen ? '☰' : '✕';
+}
+function closeMobileNav() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const btn = document.getElementById('menuBtn');
+  sidebar.classList.remove('open');
+  overlay.classList.remove('open');
+  btn.textContent = '☰';
+}
+
+// Close mobile nav when a TOC link is clicked
+document.querySelectorAll('#toc a').forEach(a => {
+  a.addEventListener('click', () => {
+    if (window.innerWidth <= 900) closeMobileNav();
+  });
+});
+
+// Mobile progress bar sync
+const mobileBar = document.getElementById('mobileBar');
+window.addEventListener('scroll', () => {
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docH > 0 ? Math.min(100, (window.scrollY / docH) * 100) : 0;
+  if (mobileBar) mobileBar.style.width = pct + '%';
+}, { passive: true });
+
 </script>
-
 </body>
 </html>
