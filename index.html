@@ -54,7 +54,7 @@
   .masthead-inner {
     max-width: var(--full-width);
     margin: 0 auto;
-    padding: 36px 40px 28px;
+    padding: 36px 180px 28px 40px;
   }
   .journal-title {
     font-family: 'Playfair Display', Georgia, serif;
@@ -903,6 +903,7 @@
     }
     .sidebar.open { transform: translateX(0); }
     .masthead { padding-left: 0; padding-top: 68px; }
+    .masthead-inner { padding: 24px 20px 20px; }
     .page-shell { margin-left: 0; }
     .main { padding: 30px 20px 60px; }
     .report-title { font-size: 26px; }
@@ -1003,6 +1004,205 @@
     .timeline { padding-left: 16px; }
   }
 
+
+  /* ── AUTHOR FOOTER ── */
+  .author-footer {
+    border-top: 2px solid var(--ink);
+    margin-top: 56px;
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+  }
+  .author-footer-bio {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-light);
+  }
+  .author-footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .author-footer-role {
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.3px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .author-footer-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-light);
+    margin-bottom: 18px;
+    max-width: 520px;
+  }
+  .author-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .author-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-light);
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    padding: 5px 12px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .author-link:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .author-link svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+  .author-footer-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .author-footer-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.3;
+  }
+  @media (max-width: 600px) {
+    .author-footer {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media print {
+    .author-footer { display: none; }
+  }
+
+
+  /* ── MASTHEAD SOCIAL ICONS ── */
+  .masthead-social {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    z-index: 10;
+  }
+  .masthead-social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 12px 5px 9px;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.18s ease;
+    border: 1.5px solid transparent;
+    min-width: 120px;
+    justify-content: flex-start;
+  }
+  .masthead-social a svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+  /* Substack — orange brand */
+  .social-substack {
+    background: #fff7f0;
+    color: #d14a00;
+    border-color: #f0a070 !important;
+  }
+  .social-substack:hover {
+    background: #ff6719;
+    color: #fff !important;
+    border-color: #ff6719 !important;
+    transform: translateX(-2px);
+    box-shadow: 0 3px 10px rgba(255,103,25,0.25);
+  }
+  .social-substack svg { fill: #d14a00; }
+  .social-substack:hover svg { fill: #fff; }
+
+  /* LinkedIn — blue brand */
+  .social-linkedin {
+    background: #f0f5ff;
+    color: #0a66c2;
+    border-color: #90b8e8 !important;
+  }
+  .social-linkedin:hover {
+    background: #0a66c2;
+    color: #fff !important;
+    border-color: #0a66c2 !important;
+    transform: translateX(-2px);
+    box-shadow: 0 3px 10px rgba(10,102,194,0.25);
+  }
+  .social-linkedin svg { fill: #0a66c2; }
+  .social-linkedin:hover svg { fill: #fff; }
+
+  /* Portfolio — dark/green GitHub feel */
+  .social-portfolio {
+    background: #f2f6f0;
+    color: #2d5a27;
+    border-color: #8ab888 !important;
+  }
+  .social-portfolio:hover {
+    background: #2d5a27;
+    color: #fff !important;
+    border-color: #2d5a27 !important;
+    transform: translateX(-2px);
+    box-shadow: 0 3px 10px rgba(45,90,39,0.25);
+  }
+  .social-portfolio svg { stroke: #2d5a27; }
+  .social-portfolio:hover svg { stroke: #fff; }
+
+  /* Masthead inner needs relative positioning */
+  .masthead-inner { position: relative; }
+
+  /* On mobile: collapse to centered row below title */
+  @media (max-width: 900px) {
+    .masthead-social {
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: 12px 0 4px;
+      gap: 8px;
+    }
+    .masthead-social a {
+      min-width: unset;
+      justify-content: center;
+    }
+  }
+  @media print {
+    .masthead-social { display: none; }
+  }
+
 </style>
 </head>
 <body>
@@ -1018,7 +1218,35 @@
 <!-- MASTHEAD -->
 <div class="masthead">
   <div class="masthead-inner">
-    <div class="journal-title">Clinical Education &amp; Technology Analysis · LSU Health </div>
+    <div class="masthead-social">
+      <!-- Substack -->
+      <a href="https://swimed.substack.com" target="_blank" rel="noopener"
+         class="social-substack" aria-label="Substack newsletter">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+        </svg>
+        Substack
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/ramnarayan/" target="_blank" rel="noopener"
+         class="social-linkedin" aria-label="LinkedIn profile">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+        LinkedIn
+      </a>
+      <!-- Portfolio -->
+      <a href="https://datadrivenmed.github.io/" target="_blank" rel="noopener"
+         class="social-portfolio" aria-label="DataDrivenMed portfolio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </svg>
+        Portfolio
+      </a>
+    </div>
+    <div class="journal-title">Clinical Education &amp; Technology Analysis </div>
     <h1 class="report-title">OpenEvidence: A Clinical and Strategic Assessment for Academic Medical Practice</h1>
     <div class="report-subtitle">Evidence synthesis, failure modes, governance, and deployment considerations across Louisiana health systems</div>
     <div class="author-row">
@@ -1079,9 +1307,6 @@
     <!-- ABSTRACT -->
     <div class="abstract-box" id="abstract">
       <div class="abstract-label">Abstract</div>
-      <div class="badge badge-gray" style="margin-bottom: 15px; display: block; text-align: center; font-family: 'JetBrains Mono', monospace; width: 100%;">
-        NOTICE: PERSONAL EDUCATIONAL ASSESSMENT — NOT AN INSTITUTIONAL MANDATE
-      </div>
       <p>OpenEvidence is the most widely adopted AI-powered clinical decision support platform among U.S. physicians as of April 2026, reporting daily use by more than 40% of the nation's physician workforce and over 20 million clinical consultations per month. The platform is valued at $12 billion following a $250 million Series D round in January 2026. This report synthesizes available evidence on its technical architecture, clinical performance, business model, competitive positioning, and failure taxonomy. It integrates current AI implementation data from Ochsner Health, LCMC Health, FMOL Health / Our Lady of the Lake, and Lake Charles Memorial Hospital — the four health systems across which readers of this report rotate. The report concludes with specific guidance for medical educators, program directors, residents, and students on appropriate use, required verification practices, PHI compliance, and the risks of automation bias and diagnostic deskilling.</p>
       <div class="keywords"><strong>Key terms:</strong> clinical decision support, artificial intelligence, large language models, retrieval-augmented generation, medical education, physician burnout, prior authorization, coding intelligence</div>
     </div>
@@ -3356,11 +3581,6 @@
         <p>If you apply this framework to OpenEvidence at your current rotation site, here is the honest scorecard: The pain point is real and measurable. The ownership question is unresolved at most Louisiana sites — no named institutional owner, no confirmed BAA at any of the four systems covered in this report. The worst-case scenarios are documented in Section 17. The guardrails are partial and unaudited. The 14-day metric is trackable. The pricing is zero for individual access. The lock-in risk is low for search; meaningfully higher if your institution embeds Coding Intelligence into its billing workflow. Use this as your baseline. Update it as your rotation site's AI governance framework matures.</p>
       </div>
     </section>
-    <div style="margin-top: 50px; padding: 25px; border: 1px solid var(--rule); background: var(--paper-warm); font-size: 14px; line-height: 1.6; color: var(--ink-light);">
-        <h4 style="margin-top: 0; color: var(--accent); border: none; letter-spacing: 2px;">DISCLAIMER & INSTITUTIONAL STANDING</h4>
-        <p>This assessment is provided strictly for <strong>educational and informational purposes</strong>. The analysis, failure taxonomy, and strategic evaluations contained herein represent the professional observations of the author and do not constitute an official report, mandate, or clinical directive from the insitute</p>
-        <p style="margin-top: 10px;">Usage of any AI tool should follow individual health system policies. This document does not establish institutional policy for Ochsner, LCMC, FMOL, or Lake Charles Memorial.</p>
-    </div>
     <div class="footnotes">
       <strong>Source basis and disclosure</strong><br>
       This report synthesizes 18 internal analytical documents, publicly available press releases and news reporting, peer-reviewed studies available via PubMed and medRxiv, and current web-searched information on Louisiana health system AI deployments. Financial figures are from public reporting and have not been independently verified. OpenEvidence was contacted for comment; no response was received before publication. This report does not represent the institutional position of any Louisiana health system or GME program. It is prepared for educational purposes and does not constitute clinical, legal, investment, or regulatory advice. The analyst has no financial relationship with OpenEvidence or any competing platform.
@@ -3368,7 +3588,37 @@
       <strong>Key data sources:</strong> OpenEvidence press releases (2024–2026); Sacra equity research; MobiHealthNews; Healthcare IT News; Fierce Healthcare; Becker's Hospital Review; HealthLeaders Media; Verite News; Nabla Technologies press releases; FMOL Health / Ochsner Health / LCMC Health public communications; Cambridge Health Alliance NCT07199231; medRxiv preprint (MedXpertQA evaluation); 2025 Physicians AI Report; 2026 Hospitalist Survey (JMIR); Epic Systems User Group Meeting announcements 2025–2026.
     </div>
 
-    <div class="print-note">OpenEvidence Assessment (Personal Project) · April 9, 2026 · Educational use only · Not an institutional mandate</div>
+
+    <div class="author-footer">
+      <div>
+        <div class="author-footer-label">About the Author</div>
+        <div class="author-footer-name">Ram Paragi</div>
+        <div class="author-footer-role">Strategic Outcomes &amp; Accreditation </div>
+        <p class="author-footer-desc">Ram writes on AI in clinical medicine, medical education analytics, and physician workforce policy. His work covers AI failure-mode analysis, GME governance, and the intersection of data science and health systems strategy.</p>
+        <div class="author-links">
+          <a href="https://swimed.substack.com" target="_blank" rel="noopener" class="author-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16v2.5c0 .5-.2 1-.6 1.4L12 14 4.6 7.9C4.2 7.5 4 7 4 6.5V4z"/><path d="M4 14.5V20l8-4 8 4v-5.5"/>
+            </svg>
+            Substack · swimed.substack.com
+          </a>
+          <a href="https://www.linkedin.com/in/ramnarayan/" target="_blank" rel="noopener" class="author-link">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+            </svg>
+            LinkedIn · Ram Paragi
+          </a>
+          <a href="https://datadrivenmed.github.io/" target="_blank" rel="noopener" class="author-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            Portfolio · DataDrivenMed
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="print-note">OpenEvidence: Clinical and Strategic Assessment · April 9, 2026 · For academic and educational use</div>
 
   </main>
 </div>
