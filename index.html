@@ -1077,10 +1077,10 @@
   }
 
 
-  /* ── MASTHEAD SOCIAL ICONS ── */
+  /* ── MASTHEAD SOCIAL LINKS ── */
   .masthead-social {
     position: absolute;
-    top: 20px;
+    top: 22px;
     right: 28px;
     display: flex;
     flex-direction: column;
@@ -1091,95 +1091,43 @@
   .masthead-social a {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    padding: 5px 12px 5px 9px;
-    border-radius: 3px;
+    gap: 5px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.3px;
     text-decoration: none;
     white-space: nowrap;
-    transition: all 0.18s ease;
-    border: 1.5px solid transparent;
-    min-width: 120px;
-    justify-content: flex-start;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: opacity 0.15s;
   }
-  .masthead-social a svg {
-    width: 13px;
-    height: 13px;
-    flex-shrink: 0;
-  }
-  /* Substack — orange brand */
-  .social-substack {
-    background: #fff7f0;
-    color: #d14a00;
-    border-color: #f0a070 !important;
-  }
-  .social-substack:hover {
-    background: #ff6719;
-    color: #fff !important;
-    border-color: #ff6719 !important;
-    transform: translateX(-2px);
-    box-shadow: 0 3px 10px rgba(255,103,25,0.25);
-  }
-  .social-substack svg { fill: #d14a00; }
-  .social-substack:hover svg { fill: #fff; }
+  .masthead-social a:hover { opacity: 0.6; }
+  .masthead-social a svg { width: 12px; height: 12px; flex-shrink: 0; }
 
-  /* LinkedIn — blue brand */
-  .social-linkedin {
-    background: #f0f5ff;
-    color: #0a66c2;
-    border-color: #90b8e8 !important;
-  }
-  .social-linkedin:hover {
-    background: #0a66c2;
-    color: #fff !important;
-    border-color: #0a66c2 !important;
-    transform: translateX(-2px);
-    box-shadow: 0 3px 10px rgba(10,102,194,0.25);
-  }
-  .social-linkedin svg { fill: #0a66c2; }
-  .social-linkedin:hover svg { fill: #fff; }
+  .social-substack         { color: #c94a00; }
+  .social-substack svg     { fill: #c94a00; }
+  .social-linkedin         { color: #0a66c2; }
+  .social-linkedin svg     { fill: #0a66c2; }
+  .social-portfolio        { color: #2d5a27; }
+  .social-portfolio svg    { stroke: #2d5a27; fill: none; }
 
-  /* Portfolio — dark/green GitHub feel */
-  .social-portfolio {
-    background: #f2f6f0;
-    color: #2d5a27;
-    border-color: #8ab888 !important;
-  }
-  .social-portfolio:hover {
-    background: #2d5a27;
-    color: #fff !important;
-    border-color: #2d5a27 !important;
-    transform: translateX(-2px);
-    box-shadow: 0 3px 10px rgba(45,90,39,0.25);
-  }
-  .social-portfolio svg { stroke: #2d5a27; }
-  .social-portfolio:hover svg { stroke: #fff; }
-
-  /* Masthead inner needs relative positioning */
   .masthead-inner { position: relative; }
 
-  /* On mobile: collapse to centered row below title */
   @media (max-width: 900px) {
     .masthead-social {
-      position: static;
-      flex-direction: row;
+      position: static !important;
+      flex-direction: row !important;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
-      margin: 12px 0 4px;
-      gap: 8px;
+      gap: 16px;
+      margin: 10px 0 2px;
+      width: 100%;
     }
-    .masthead-social a {
-      min-width: unset;
-      justify-content: center;
-    }
+    .masthead-social a { font-size: 11px; }
   }
-  @media print {
-    .masthead-social { display: none; }
-  }
+  @media print { .masthead-social { display: none; } }
 
 
   /* ═══════════════════════════════════════════════════════
@@ -1608,7 +1556,7 @@
         Portfolio
       </a>
     </div>
-    <div class="journal-title">Clinical Education &amp; Technology Analysis </div>
+    <div class="journal-title">Clinical Education &amp; Technology Analysis · LSU Health / Tulane GME</div>
     <h1 class="report-title">OpenEvidence: A Clinical and Strategic Assessment for Academic Medical Practice</h1>
     <div class="report-subtitle">Evidence synthesis, failure modes, governance, and deployment considerations across Louisiana health systems</div>
     <div class="author-row">
@@ -3955,8 +3903,8 @@
       <div>
         <div class="author-footer-label">About the Author</div>
         <div class="author-footer-name">Ram Paragi</div>
-        <div class="author-footer-role">Higher Education & Academic Medical Center Enterprise Strategist | Institutional Effectiveness, LCME/ACGME Accreditation + Strategic Analytics | Research Growth & GME Operations + Finance | AI Governance</div>
-        <p class="author-footer-desc"></p>
+        <div class="author-footer-role">Director, Strategic Outcomes &amp; Accreditation · LSU Health New Orleans School of Medicine</div>
+        <p class="author-footer-desc">Ram writes on AI in clinical medicine, medical education analytics, and physician workforce policy. His work covers AI failure-mode analysis, GME governance, and the intersection of data science and health systems strategy. He serves as the internal lead on AI adoption in medical education and clinical practice at LSU Health New Orleans.</p>
         <div class="author-links">
           <a href="https://swimed.substack.com" target="_blank" rel="noopener" class="author-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
