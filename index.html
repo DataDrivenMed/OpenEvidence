@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z79PK2S84W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z79PK2S84W');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OpenEvidence: A Clinical and Strategic Assessment for Academic Medical Practice</title>
@@ -1473,7 +1481,6 @@
 </head>
 <body>
 
-<!-- MOBILE NAV BAR -->
 <div class="mobile-nav-bar" id="mobileNavBar">
   <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation" id="menuBtn">☰</button>
   <div style="flex:1;overflow:hidden;">
@@ -1484,7 +1491,6 @@
 <div class="mobile-progress"><div class="mobile-progress-fill" id="mobileBar"></div></div>
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileNav()"></div>
 
-<!-- FLOATING ACTION BUTTON (mobile only) -->
 <div class="fab-container" id="fabContainer">
   <div class="fab-toc-menu" id="fabTocMenu">
     <span class="fab-toc-label">Jump to section</span>
@@ -1525,11 +1531,9 @@
 </div>
 
 
-<!-- MASTHEAD -->
 <div class="masthead">
   <div class="masthead-inner">
     <div class="masthead-social">
-      <!-- Substack -->
       <a href="https://swimed.substack.com" target="_blank" rel="noopener"
          class="social-substack" aria-label="Substack newsletter">
         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -1537,7 +1541,6 @@
         </svg>
         Substack
       </a>
-      <!-- LinkedIn -->
       <a href="https://www.linkedin.com/in/ramnarayan/" target="_blank" rel="noopener"
          class="social-linkedin" aria-label="LinkedIn profile">
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1547,7 +1550,6 @@
         </svg>
         LinkedIn
       </a>
-      <!-- Portfolio -->
       <a href="https://datadrivenmed.github.io/" target="_blank" rel="noopener"
          class="social-portfolio" aria-label="DataDrivenMed portfolio">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1579,10 +1581,8 @@
   </div>
 </div>
 
-<!-- PAGE SHELL -->
 <div class="page-shell">
 
-  <!-- SIDEBAR TOC -->
   <nav class="sidebar" aria-label="Table of contents">
     <div class="reading-progress"><div class="reading-progress-fill" id="readingBar"></div></div>
     <div class="sidebar-inner">
@@ -1611,17 +1611,14 @@
     </div>
   </nav>
 
-  <!-- MAIN CONTENT -->
   <main class="main">
 
-    <!-- ABSTRACT -->
     <div class="abstract-box" id="abstract">
       <div class="abstract-label">Abstract</div>
       <p>OpenEvidence is the most widely adopted AI-powered clinical decision support platform among U.S. physicians as of April 2026, reporting daily use by more than 40% of the nation's physician workforce and over 20 million clinical consultations per month. The platform is valued at $12 billion following a $250 million Series D round in January 2026. This report synthesizes available evidence on its technical architecture, clinical performance, business model, competitive positioning, and failure taxonomy. It integrates current AI implementation data from Ochsner Health, LCMC Health, FMOL Health / Our Lady of the Lake, and Lake Charles Memorial Hospital — the four health systems across which readers of this report rotate. The report concludes with specific guidance for medical educators, program directors, residents, and students on appropriate use, required verification practices, PHI compliance, and the risks of automation bias and diagnostic deskilling.</p>
       <div class="keywords"><strong>Key terms:</strong> clinical decision support, artificial intelligence, large language models, retrieval-augmented generation, medical education, physician burnout, prior authorization, coding intelligence</div>
     </div>
 
-    <!-- SECTION 1: PLATFORM OVERVIEW -->
     <section id="s1">
       <div class="section-header">
         <span class="section-number">Section 1</span>
@@ -1704,7 +1701,6 @@
       </div>
     </section>
 
-    <!-- SECTION 2: SCALE & ADOPTION -->
     <section id="s2">
       <div class="section-header">
         <span class="section-number">Section 2</span>
@@ -1803,7 +1799,6 @@
       </div>
     </section>
 
-    <!-- SECTION 3: TECHNOLOGY -->
     <section id="s3">
       <div class="section-header">
         <span class="section-number">Section 3</span>
@@ -1913,7 +1908,6 @@
       <p>When published literature cannot answer a clinical question — which is the case for an estimated 80% of daily decisions in some specialties — OpenEvidence queries Alexandria, a real-world evidence repository from Atropos Health containing over 10 million observational studies generated from EHR and claims data. A pipeline analysis of approximately 3,000 complex physician questions found that PubMed-based retrieval answered approximately 44% of queries; the Alexandria integration provided actionable answers for an additional 50.1%. These figures come from Atropos Health's own published research and represent the best available evidence, not independent third-party validation of OpenEvidence's specific implementation.</p>
     </section>
 
-    <!-- SECTION 4: CLINICAL PERFORMANCE -->
     <section id="s4">
       <div class="section-header">
         <span class="section-number">Section 4</span>
@@ -2020,7 +2014,6 @@
       </div>
     </section>
 
-    <!-- SECTION 5: FAILURE MODES -->
     <section id="s5">
       <div class="section-header">
         <span class="section-number">Section 5</span>
@@ -2127,7 +2120,6 @@
       </div>
     </section>
 
-    <!-- SECTION 6: BUSINESS MODEL -->
     <section id="s6">
       <div class="section-header">
         <span class="section-number">Section 6</span>
@@ -2206,7 +2198,6 @@
       </div>
     </section>
 
-    <!-- SECTION 7: PRODUCT SUITE -->
     <section id="s7">
       <div class="section-header">
         <span class="section-number">Section 7</span>
@@ -2289,7 +2280,6 @@
       </div>
     </section>
 
-    <!-- SECTION 8: COMPETITIVE LANDSCAPE -->
     <section id="s8">
       <div class="section-header">
         <span class="section-number">Section 8</span>
@@ -2421,7 +2411,6 @@
       </div>
     </section>
 
-    <!-- SECTION 9: LOCAL HEALTH SYSTEMS -->
     <section id="s9">
       <div class="section-header">
         <span class="section-number">Section 9</span>
@@ -2554,7 +2543,6 @@
       </div>
     </section>
 
-    <!-- SECTION 10: REGULATORY & LEGAL -->
     <section id="s10">
       <div class="section-header">
         <span class="section-number">Section 10</span>
@@ -2613,7 +2601,6 @@
       <p>OpenEvidence's Terms of Use place the entire burden of clinical judgment on the human end-user. There is currently no legal framework for algorithmic malpractice. If a physician or resident relies on a hallucinated or misinterpreted guideline from OpenEvidence and patient harm results, the liability rests on the human physician for failing to meet the standard of care. The software developers and the corporate entity are shielded from clinical liability. This is not a hypothetical risk — it is the current legal reality for every AI tool in clinical use.</p>
     </section>
 
-    <!-- SECTION 11: STRATEGIC POSITION -->
     <section id="s11">
       <div class="section-header">
         <span class="section-number">Section 11</span>
@@ -2791,7 +2778,6 @@
 
     </section>
 
-    <!-- SECTION 12: GUIDANCE FOR EDUCATORS -->
     <section id="s12">
       <div class="section-header">
         <span class="section-number">Section 12</span>
@@ -2942,7 +2928,6 @@
       </div>
     </section>
 
-    <!-- SECTION 13: WHAT WE DON'T KNOW -->
     <section id="s13">
       <div class="section-header">
         <span class="section-number">Section 13</span>
@@ -3001,7 +2986,7 @@
             </tr>
             <tr>
               <td>Has Google Ventures' board access created any information exposure around the physician behavioral query dataset?</td>
-              <td>Described as the most important unresolved structural question in the analysis. If GV board materials include meaningful dataset information, the risk rating shifts from moderate to high.</td>
+              <td>Described as the most important unresolved structural question in the analysis. If GV board materials include meaningful information about how that dataset is structured, queried, or monetized, the risk rating shifts from moderate to high.</td>
               <td><span class="badge badge-red">Governance</span></td>
             </tr>
             <tr>
@@ -3035,7 +3020,6 @@
       </div>
     </section>
 
-    <!-- SECTION 14: RAG ARCHITECTURE -->
     <section id="s14">
       <div class="section-header">
         <span class="section-number">Section 14</span>
@@ -3150,7 +3134,6 @@
       </div>
     </section>
 
-    <!-- SECTION 15: OE vs UpToDate Expert AI -->
     <section id="s15">
       <div class="section-header">
         <span class="section-number">Section 15</span>
@@ -3267,7 +3250,6 @@
       </div>
     </section>
 
-    <!-- SECTION 16: DOXIMITY PLAYBOOK -->
     <section id="s16">
       <div class="section-header">
         <span class="section-number">Section 16</span>
@@ -3416,7 +3398,6 @@
       </div>
     </section>
 
-    <!-- SECTION 17: KEY RISKS EXPANDED -->
     <section id="s17">
       <div class="section-header">
         <span class="section-number">Section 17</span>
@@ -3432,7 +3413,7 @@
             <ul>
               <li>Accuracy risk: predictable and manageable with the scenario-type table in this section</li>
               <li>PHI risk: entirely within your control — de-identify all queries on non-BAA accounts</li>
-              <li>Coding compliance risk: review AI-generated MDM rationale before approving any E&M code</li>
+              <li>Coding compliance risk: review AI-generated MDM rationale before approving any E&amp;M code</li>
               <li>Deskilling risk: sequence your use (differential first, OE second) — this is a behavioral habit, not a technology fix</li>
             </ul>
           </div>
@@ -3614,7 +3595,6 @@
         <div class="table-caption">Table 10. Risk register. Probability and impact assessments are analytical judgments based on publicly available information, not actuarial estimates.</div>
       </div>
     </section>
-    <!-- SECTION 18: AI TOOL EVALUATION GUIDE -->
     <section id="s18">
       <div class="section-header">
         <span class="section-number">Section 18</span>
@@ -3739,8 +3719,6 @@
             <ul>
               <li>"That probably will not happen" — probably is not an acceptable risk framework for billing compliance or patient safety.</li>
               <li>"We will deal with it if it comes up" — design around it now, or do not deploy.</li>
-              <li>The worst case involves a HIPAA violation, fraudulent billing, or patient harm AND you have no architectural safeguard — do not deploy. Full stop.</li>
-              <li>No monitoring that catches silent errors within 72 hours — AI tools that fail silently are the most dangerous class in clinical settings.</li>
             </ul>
           </div>
 
@@ -3748,7 +3726,7 @@
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>Worst case scenario</th><th>OE architectural safeguard</th><th>Monitoring</th><th>Survivable?</th></tr>
+                <tr><th>Worst case scenario</th><th>OE architectural safeguard</th><th>Monitoring</th><th>Survivability?</th></tr>
               </thead>
               <tbody>
                 <tr>
@@ -3933,7 +3911,6 @@
   </main>
 </div>
 
-<!-- CHART.JS -->
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 
 <script>
@@ -4363,66 +4340,4 @@ function scrollToTop() {
 }
 
 // Close FAB TOC when clicking outside
-document.addEventListener('click', e => {
-  if (fabContainer && !fabContainer.contains(e.target)) {
-    closeFabToc();
-  }
-});
-
-// Close FAB TOC when sidebar opens (avoid overlap)
-const origToggle = window.toggleMobileNav;
-window.toggleMobileNav = function() {
-  closeFabToc();
-  origToggle && origToggle();
-};
-
-
-// ── MOBILE NAV ──
-function toggleMobileNav() {
-  const sidebar = document.querySelector('.sidebar');
-  const overlay = document.getElementById('sidebarOverlay');
-  const btn = document.getElementById('menuBtn');
-  const isOpen = sidebar.classList.contains('open');
-  sidebar.classList.toggle('open', !isOpen);
-  overlay.classList.toggle('open', !isOpen);
-  btn.textContent = isOpen ? '☰' : '✕';
-}
-function closeMobileNav() {
-  const sidebar = document.querySelector('.sidebar');
-  const overlay = document.getElementById('sidebarOverlay');
-  const btn = document.getElementById('menuBtn');
-  sidebar.classList.remove('open');
-  overlay.classList.remove('open');
-  btn.textContent = '☰';
-}
-
-// Navigation: let the browser handle it natively via hash change
-// CSS scroll-margin-top handles the fixed nav bar offset
-function navigateToSection(targetId) {
-  // Just set the hash — browser follows the anchor natively on all devices
-  window.location.hash = '#' + targetId;
-}
-
-// Sidebar TOC links — close drawer, let native href anchor work
-document.querySelectorAll('#toc a').forEach(a => {
-  a.addEventListener('click', function(e) {
-    if (window.innerWidth <= 900) {
-      // Close the sidebar first
-      closeMobileNav();
-      // Let the browser follow the href naturally after sidebar closes
-      // CSS scroll-margin-top handles the fixed nav bar offset
-    }
-  });
-});
-
-// Mobile progress bar sync
-const mobileBar = document.getElementById('mobileBar');
-window.addEventListener('scroll', () => {
-  const docH = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = docH > 0 ? Math.min(100, (window.scrollY / docH) * 100) : 0;
-  if (mobileBar) mobileBar.style.width = pct + '%';
-}, { passive: true });
-
-</script>
-</body>
-</html>
+document.addEventListener('click
